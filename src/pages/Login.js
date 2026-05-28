@@ -11,14 +11,15 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      const response = await fetch('https://api.yoyoo.store/api/auth/login', {
-      //  const response = await fetch('https://jglf66qzl9.execute-api.eu-north-1.amazonaws.com/api/auth/login', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -10,6 +10,10 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+  console.log("URL", API_BASE_URL);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -29,9 +33,7 @@ const Register = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://api.yoyoo.store/api/auth/register', {
-      // const response = await fetch('https://jglf66qzl9.execute-api.eu-north-1.amazonaws.com/api/auth/register', {
-
+      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
